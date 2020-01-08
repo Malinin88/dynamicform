@@ -16,6 +16,9 @@ import { PageComponent } from './components/page/page.component';
     AppRoutingModule,
     DynamicFormModule
   ],
+  entryComponents: [
+    PageComponent
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
