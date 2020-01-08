@@ -1,6 +1,6 @@
-import { FORM_CONTROL_TYPE } from './dynamic-form/constants/form-control-type';
-import { IDynamicFieldConfig } from './dynamic-form/interfaces/dynamic-field-config.interface';
+import { FORM_CONTROL_TYPE } from './ shared/constants/form-control-type';
 import { Component } from '@angular/core';
+import { IDynamicFieldConfig } from './ shared/interfaces/dynamic-field-config.interface';
 
 @Component({
   selector: 'app-root',
