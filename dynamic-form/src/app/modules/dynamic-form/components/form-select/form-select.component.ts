@@ -1,4 +1,4 @@
-import { IDynamicFieldConfig } from '../../../interfaces/dynamic-field-config.interface';
+import { IDynamicFieldConfig } from '../../../../interfaces/dynamic-field-config.interface';
 import { IDynamicField } from '../../interfaces/dynamic-field.interface';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';

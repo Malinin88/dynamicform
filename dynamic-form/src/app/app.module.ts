@@ -1,4 +1,4 @@
-import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
+import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
