@@ -1,6 +1,6 @@
-import { FORM_CONTROL_TYPE } from './ shared/constants/form-control-type';
+import { FORM_CONTROL_TYPE } from './constants/form-control-type';
 import { Component } from '@angular/core';
-import { IDynamicFieldConfig } from './ shared/interfaces/dynamic-field-config.interface';
+import { IDynamicFieldConfig } from './interfaces/dynamic-field-config.interface';
 
 @Component({
   selector: 'app-root',
@@ -30,8 +30,4 @@ export class AppComponent {
       type: FORM_CONTROL_TYPE.button,
     },
   ];
-
-  public formSubmitted(formValue: any): void {
-    console.log(formValue);
-  }
 }
