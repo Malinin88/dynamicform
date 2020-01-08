@@ -1,5 +1,5 @@
 import { FORM_CONTROL_TYPE } from './dynamic-form/constants/form-control-type';
-import { FormControlConfig } from './dynamic-form/models/form-control-config';
+import { IDynamicFieldConfig } from './dynamic-form/interfaces/dynamic-field-config.interface';
 import { Component } from '@angular/core';
 
 @Component({
@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public title = 'dynamic-form';
 
-  public config: FormControlConfig[] = [
+  public config: IDynamicFieldConfig[] = [
     {
       type: FORM_CONTROL_TYPE.input,
       label: 'Full name',

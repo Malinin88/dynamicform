@@ -1,14 +1,13 @@
-import { FORM_CONTROL_TYPE } from './../constants/form-control-type';
+import { FORM_CONTROL_TYPE } from '../constants/form-control-type';
 import { ValidatorFn } from '@angular/forms';
-import { FORM_CONTROL_NAME } from '../constants/form-control-name';
 
-export interface FormControlConfig {
+export interface IDynamicFieldConfig {
 
   type: FORM_CONTROL_TYPE;
 
   label?: string;
 
-  name: FORM_CONTROL_NAME;
+  name: string;
 
   placeholder?: string;
 

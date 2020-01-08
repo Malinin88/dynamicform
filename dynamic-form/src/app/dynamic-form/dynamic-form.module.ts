@@ -5,6 +5,7 @@ import { DynamicFormComponent } from './containers/dynamic-form/dynamic-form.com
 import { FormInputComponent } from './components/form-input/form-input.component';
 import { FormButtonComponent } from './components/form-button/form-button.component';
 import { FormSelectComponent } from './components/form-select/form-select.component';
+import { DynamicFieldDirective } from './directives/dynamic-field/dynamic-field.directive';
 
 
 
@@ -13,7 +14,8 @@ import { FormSelectComponent } from './components/form-select/form-select.compon
     DynamicFormComponent,
     FormInputComponent,
     FormButtonComponent,
-    FormSelectComponent
+    FormSelectComponent,
+    DynamicFieldDirective
   ],
   imports: [
     CommonModule,

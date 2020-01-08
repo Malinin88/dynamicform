@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControlConfig } from '../../models/form-control-config';
+import { IDynamicFieldConfig } from '../../interfaces/dynamic-field-config.interface';
 import { FormGroup } from '@angular/forms';
+import { IDynamicField } from '../../interfaces/dynamic-field.interface';
 
 @Component({
   selector: 'app-form-button',
   templateUrl: './form-button.component.html',
   styleUrls: ['./form-button.component.scss']
 })
-export class FormButtonComponent implements OnInit {
+export class FormButtonComponent implements IDynamicField, OnInit {
 
-  public config: FormControlConfig;
+  public config: IDynamicFieldConfig;
 
   public group: FormGroup;
 

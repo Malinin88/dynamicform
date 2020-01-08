@@ -1,4 +1,4 @@
-import { FormControlConfig } from './../../models/form-control-config';
+import { IDynamicFieldConfig } from '../../interfaces/dynamic-field-config.interface';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./dynamic-form.component.scss']
 })
 export class DynamicFormComponent implements OnInit {
-  @Input() public config: FormControlConfig[];
+  @Input() public config: IDynamicFieldConfig[];
 
   public form: FormGroup;
 
