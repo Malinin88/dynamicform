@@ -30,4 +30,8 @@ export class AppComponent {
       type: FORM_CONTROL_TYPE.button,
     },
   ];
+
+  public formSubmitted(formValue: any): void {
+    console.log(formValue);
+  }
 }

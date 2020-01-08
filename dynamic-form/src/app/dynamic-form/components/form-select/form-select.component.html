@@ -1,7 +1,7 @@
 <div class="dynamic-field form-select" [formGroup]="group">
-  <label></label>
+<label>{{config.label}}</label>
   <select [formControlName]="config.name">
     <option value=""></option>
-    <option *ngFor="let option of config.options"></option>
+  <option *ngFor="let option of config.options">{{option}}</option>
   </select>
 </div>

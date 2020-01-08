@@ -12,10 +12,15 @@ import { DynamicFieldDirective } from './directives/dynamic-field/dynamic-field.
 @NgModule({
   declarations: [
     DynamicFormComponent,
+    DynamicFieldDirective,
     FormInputComponent,
     FormButtonComponent,
     FormSelectComponent,
-    DynamicFieldDirective
+  ],
+  entryComponents: [
+    FormInputComponent,
+    FormButtonComponent,
+    FormSelectComponent,
   ],
   imports: [
     CommonModule,
