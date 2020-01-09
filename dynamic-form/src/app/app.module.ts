@@ -1,23 +1,18 @@
-import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
+import { ContentModule } from './modules/content/content.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PageComponent } from './modules/content/components/page/page.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PageComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DynamicFormModule
-  ],
-  entryComponents: [
-    PageComponent
+    ContentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

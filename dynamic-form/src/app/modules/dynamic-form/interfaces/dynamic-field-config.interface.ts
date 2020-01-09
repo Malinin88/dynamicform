@@ -1,4 +1,5 @@
-import { FORM_CONTROL_TYPE } from '../constants/form-control-type';
+import { IFieldRenderDependency } from './field-render-dependency.interface';
+import { FORM_CONTROL_TYPE } from '../constants/form-control-type.enum';
 import { ValidatorFn } from '@angular/forms';
 
 export interface IDynamicFieldConfig {
@@ -7,7 +8,7 @@ export interface IDynamicFieldConfig {
 
   label?: string;
 
-  name: string;
+  controlName: string;
 
   placeholder?: string;
 
@@ -16,5 +17,7 @@ export interface IDynamicFieldConfig {
   options?: string[];
 
   validators?: ValidatorFn | ValidatorFn[];
+
+  renderDependencies?: IFieldRenderDependency[];
 
 }

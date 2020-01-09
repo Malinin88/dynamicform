@@ -1,4 +1,4 @@
-import { IDynamicFieldConfig } from '../../../../shared/interfaces/dynamic-field-config.interface';
+import { IDynamicFieldConfig } from '../../../dynamic-form/interfaces/dynamic-field-config.interface';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
