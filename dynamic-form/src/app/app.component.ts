@@ -1,6 +1,6 @@
-import { PageComponent } from './components/page/page.component';
-import { IPageConfig } from './interfaces/page-config.interface';
-import { FORM_CONTROL_TYPE } from './constants/form-control-type';
+import { PageComponent } from './modules/content/components/page/page.component';
+import { IPageConfig } from './shared/interfaces/page-config.interface';
+import { FORM_CONTROL_TYPE } from './shared/constants/form-control-type';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PageComponent } from './components/page/page.component';
+import { PageComponent } from './modules/content/components/page/page.component';
 
 @NgModule({
   declarations: [
