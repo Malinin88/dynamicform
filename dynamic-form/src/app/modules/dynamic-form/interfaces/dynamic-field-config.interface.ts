@@ -20,6 +20,10 @@ export interface IDynamicFieldConfig {
 
   renderDependencies?: IFieldRenderDependency[];
 
+  // All controls
   visible: boolean;
+
+  // Buttons only
+  disabled?: boolean;
 
 }

@@ -63,7 +63,7 @@ export class DynamicFormComponent implements OnInit {
     controlRenderDeps.forEach(renderDependency => {
       switch (renderDependency.type) {
         case DEPENDENCY_TYPE.disable:
-          this.dynamicFormSvs.applyDisableDependency(control, group, renderDependency);
+          this.dynamicFormSvs.applyDisableDependency(control, fieldConfig, group, renderDependency);
           break;
         case DEPENDENCY_TYPE.display:
           this.dynamicFormSvs.applyDisplayDependency(control, fieldConfig, group, renderDependency);

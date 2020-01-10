@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { DEPENDENCY_TARGET_TYPE } from './modules/dynamic-form/constants/dependency-target-type.enum';
 import { CONTROL_DEPENDENCY_CONDITION } from './modules/dynamic-form/constants/control-dependency-condition.enum';
 import { COMPARISON_TARGET } from './modules/dynamic-form/constants/comparison-target.enum';
+import { Validators } from '@angular/forms';
+import { FORM_DEPENDENCY_CONDITION } from './modules/dynamic-form/constants/form-dependency-condition.enum';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +27,7 @@ export class AppComponent implements OnInit {
           label: 'Full name one',
           controlName: 'nameOne',
           placeholder: 'Enter your name one',
+          validators: [Validators.required],
           visible: true,
           renderDependencies: [
             {
@@ -51,6 +54,7 @@ export class AppComponent implements OnInit {
           controlName: 'foodOne',
           options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
           placeholder: 'Select an option',
+          validators: [Validators.required],
           visible: true,
         },
         {
@@ -58,6 +62,14 @@ export class AppComponent implements OnInit {
           controlName: 'submitOne',
           type: FORM_CONTROL_TYPE.button,
           visible: true,
+          renderDependencies: [
+            {
+              type: DEPENDENCY_TYPE.disable,
+              targetType: DEPENDENCY_TARGET_TYPE.form,
+              targetName: 'form',
+              condition: FORM_DEPENDENCY_CONDITION.formInvalid
+            }
+          ]
         },
       ]
     },

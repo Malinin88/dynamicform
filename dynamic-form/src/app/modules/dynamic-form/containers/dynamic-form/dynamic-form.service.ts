@@ -1,3 +1,4 @@
+import { FORM_DEPENDENCY_CONDITION } from './../../constants/form-dependency-condition.enum';
 import { IFieldRenderDependency } from './../../interfaces/field-render-dependency.interface';
 import { IDynamicFieldConfig } from './../../interfaces/dynamic-field-config.interface';
 import { takeUntil } from 'rxjs/operators';
@@ -7,6 +8,7 @@ import { FormControl, FormGroup, AbstractControl } from '@angular/forms';
 import { DEPENDENCY_TARGET_TYPE } from '../../constants/dependency-target-type.enum';
 import { CONTROL_DEPENDENCY_CONDITION } from '../../constants/control-dependency-condition.enum';
 import { Subject } from 'rxjs';
+import { FORM_CONTROL_TYPE } from '../../constants/form-control-type.enum';
 
 @Injectable()
 export class DynamicFormService implements OnDestroy {
@@ -19,7 +21,11 @@ export class DynamicFormService implements OnDestroy {
     this.unsubscribeAll$.next();
   }
 
-  public applyDisableDependency(control: FormControl, group: FormGroup, renderDependency: IFieldRenderDependency): void {
+  public applyDisableDependency(
+    control: FormControl,
+    fieldConfig: IDynamicFieldConfig,
+    group: FormGroup,
+    renderDependency: IFieldRenderDependency): void {
     if (renderDependency.targetType === DEPENDENCY_TARGET_TYPE.control) {
       if (!renderDependency.targetName) {
         throw new Error(`No target control name is provided for ${this.getControlName(control)} render dependency`);
@@ -32,7 +38,7 @@ export class DynamicFormService implements OnDestroy {
         throw new Error(`Could not find a dependency target with the name ${renderDependency.targetName} to apply a render dependency for ${this.getControlName(control)}`);
       }
 
-      const setDisableStatus = testValue => {
+      const toggleDisabled = testValue => {
         const disabled = this.logicSvc.isControlDependencyConditionSatisfied(
           renderDependency.condition as CONTROL_DEPENDENCY_CONDITION,
           testValue,
@@ -46,11 +52,32 @@ export class DynamicFormService implements OnDestroy {
         }
       };
 
-      setDisableStatus(dependencyTargetControl.value);
+      toggleDisabled(dependencyTargetControl.value);
 
       dependencyTargetControl.valueChanges
         .pipe(takeUntil(this.unsubscribeAll$))
-        .subscribe(testValue => setDisableStatus(testValue));
+        .subscribe(testValue => toggleDisabled(testValue));
+    }
+
+    if (renderDependency.targetType === DEPENDENCY_TARGET_TYPE.form && fieldConfig.type === FORM_CONTROL_TYPE.button) {
+      const toggleDisabled = (formGroup: FormGroup) => {
+        const disabled = this.logicSvc.isFormDependencyConditionSatisfied(
+          renderDependency.condition as FORM_DEPENDENCY_CONDITION,
+          formGroup
+        );
+
+        if (disabled) {
+          fieldConfig.disabled = true;
+        } else {
+          fieldConfig.disabled = false;
+        }
+      };
+
+      toggleDisabled(group);
+
+      group.statusChanges
+        .pipe(takeUntil(this.unsubscribeAll$))
+        .subscribe(() => toggleDisabled(group));
     }
   }
 
