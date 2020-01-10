@@ -107,10 +107,12 @@ export class DynamicFormService implements OnDestroy {
         );
 
         if (display) {
-          // todo: apply validators
+          control.setValidators(fieldConfig.validators);
+          control.updateValueAndValidity();
           fieldConfig.visible = true;
         } else {
-          // todo: clear validators
+          control.clearValidators();
+          control.updateValueAndValidity();
           fieldConfig.visible = false;
         }
       };
@@ -122,7 +124,6 @@ export class DynamicFormService implements OnDestroy {
         .subscribe(testValue => toggleDisplay(testValue));
     }
   }
-
 
   private getControlName(control: AbstractControl): string | null {
     const formGroup = control.parent.controls;

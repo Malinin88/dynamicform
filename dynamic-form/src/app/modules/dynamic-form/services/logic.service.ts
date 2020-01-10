@@ -32,6 +32,9 @@ export class LogicService {
     let result: boolean;
 
     switch (condition) {
+      case FORM_DEPENDENCY_CONDITION.formValid:
+        result = group.valid;
+        break;
       case FORM_DEPENDENCY_CONDITION.formInvalid:
         result = !group.valid;
         break;
