@@ -16,6 +16,9 @@ export class LogicService {
       case CONTROL_DEPENDENCY_CONDITION.valueEquals:
         result = controlValue === comparisonValue;
         break;
+      case CONTROL_DEPENDENCY_CONDITION.valueNotEquals:
+        result = controlValue !== comparisonValue;
+        break;
       default:
         throw new Error(`Uknown control render dependency condition: ${condition}`);
     }

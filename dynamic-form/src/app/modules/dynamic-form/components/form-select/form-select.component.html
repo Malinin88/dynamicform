@@ -1,4 +1,4 @@
-<div class="dynamic-field form-select" [formGroup]="group">
+<div *ngIf="config.visible" class="dynamic-field form-select" [formGroup]="group">
 <label>{{config.label}}</label>
   <select [formControlName]="config.controlName">
     <option value=""></option>

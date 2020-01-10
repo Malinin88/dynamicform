@@ -20,4 +20,6 @@ export interface IDynamicFieldConfig {
 
   renderDependencies?: IFieldRenderDependency[];
 
+  visible: boolean;
+
 }

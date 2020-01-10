@@ -4,6 +4,7 @@ export enum CONTROL_DEPENDENCY_CONDITION {
   valueDefined = 'valueDefined',
   valueUndefined = 'valueUndefined',
   valueEquals = 'valueEquals',
+  valueNotEquals = 'valueNotEquals',
   valueGreaterThan = 'valueGreaterThan',
   valueGreaterThanOrEquals = 'valueGreaterThanOrEquals',
   valueLessThan = 'valueLessThan',

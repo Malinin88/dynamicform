@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
           label: 'Full name one',
           controlName: 'nameOne',
           placeholder: 'Enter your name one',
+          visible: true,
           renderDependencies: [
             {
               type: DEPENDENCY_TYPE.disable,
@@ -33,6 +34,14 @@ export class AppComponent implements OnInit {
               condition: CONTROL_DEPENDENCY_CONDITION.valueEquals,
               comparisonTarget: COMPARISON_TARGET.string,
               comparisonValue: 'Coffee'
+            },
+            {
+              type: DEPENDENCY_TYPE.display,
+              targetType: DEPENDENCY_TARGET_TYPE.control,
+              targetName: 'foodOne',
+              condition: CONTROL_DEPENDENCY_CONDITION.valueNotEquals,
+              comparisonTarget: COMPARISON_TARGET.string,
+              comparisonValue: 'Pizza'
             }
           ]
         },
@@ -42,11 +51,13 @@ export class AppComponent implements OnInit {
           controlName: 'foodOne',
           options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
           placeholder: 'Select an option',
+          visible: true,
         },
         {
           label: 'Submit one',
           controlName: 'submitOne',
-          type: FORM_CONTROL_TYPE.button
+          type: FORM_CONTROL_TYPE.button,
+          visible: true,
         },
       ]
     },
@@ -58,6 +69,7 @@ export class AppComponent implements OnInit {
           label: 'Full name two',
           controlName: 'nameTwo',
           placeholder: 'Enter your name two',
+          visible: true
         },
         {
           type: FORM_CONTROL_TYPE.select,
@@ -65,11 +77,13 @@ export class AppComponent implements OnInit {
           controlName: 'foodTwo',
           options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
           placeholder: 'Select an option',
+          visible: true
         },
         {
           label: 'Submit two',
           controlName: 'submitTwo',
           type: FORM_CONTROL_TYPE.button,
+          visible: true
         },
       ]
     }

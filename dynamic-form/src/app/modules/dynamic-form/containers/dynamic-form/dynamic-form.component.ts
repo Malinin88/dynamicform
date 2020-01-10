@@ -5,6 +5,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angu
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { DEPENDENCY_TYPE } from '../../constants/dependency-type.enum';
 import { DynamicFormService } from './dynamic-form.service';
+import { FORM_CONTROL_TYPE } from '../../constants/form-control-type.enum';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -34,12 +35,16 @@ export class DynamicFormComponent implements OnInit {
     const group = this.fb.group({});
 
     this.config.forEach(controlConfig => {
+      if (controlConfig.type === FORM_CONTROL_TYPE.button) {
+        return;
+      }
+
       group.addControl(controlConfig.controlName, this.fb.control(controlConfig.value, controlConfig.validators));
     });
 
-    this.config.forEach(controlConfig => {
-      const control = group.get(controlConfig.controlName) as FormControl;
-      this.applyRenderDepsForControl(control, group, controlConfig.renderDependencies);
+    this.config.forEach(fieldConfig => {
+      const control = group.get(fieldConfig.controlName) as FormControl;
+      this.applyRenderDepsForControl(control, fieldConfig, group, fieldConfig.renderDependencies);
     });
 
     return group;
@@ -47,6 +52,7 @@ export class DynamicFormComponent implements OnInit {
 
   private applyRenderDepsForControl(
     control: FormControl,
+    fieldConfig: IDynamicFieldConfig,
     group: FormGroup,
     controlRenderDeps: IFieldRenderDependency[]
   ): void {
@@ -58,6 +64,9 @@ export class DynamicFormComponent implements OnInit {
       switch (renderDependency.type) {
         case DEPENDENCY_TYPE.disable:
           this.dynamicFormSvs.applyDisableDependency(control, group, renderDependency);
+          break;
+        case DEPENDENCY_TYPE.display:
+          this.dynamicFormSvs.applyDisplayDependency(control, fieldConfig, group, renderDependency);
           break;
         default:
           throw new Error(`No matching handler found for render dependency of type: ${renderDependency.type}`);
