@@ -1,0 +1,4 @@
+<div *ngIf="config.visible" [formGroup]="group">
+  <!-- todo: wire app forms for validation, add custom validators -->
+  <app-dynamic-form [config]="config.nestedFormConfig"></app-dynamic-form>
+</div>

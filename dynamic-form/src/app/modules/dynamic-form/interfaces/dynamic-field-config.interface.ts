@@ -26,4 +26,6 @@ export interface IDynamicFieldConfig {
   // Buttons only
   disabled?: boolean;
 
+  nestedFormConfig?: IDynamicFieldConfig[];
+
 }

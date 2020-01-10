@@ -6,6 +6,7 @@ import { FormInputComponent } from './components/form-input/form-input.component
 import { FormButtonComponent } from './components/form-button/form-button.component';
 import { FormSelectComponent } from './components/form-select/form-select.component';
 import { DynamicFieldDirective } from './directives/dynamic-field/dynamic-field.directive';
+import { FormGroupComponent } from './components/form-group/form-group.component';
 
 
 
@@ -16,11 +17,13 @@ import { DynamicFieldDirective } from './directives/dynamic-field/dynamic-field.
     FormInputComponent,
     FormButtonComponent,
     FormSelectComponent,
+    FormGroupComponent,
   ],
   entryComponents: [
     FormInputComponent,
     FormButtonComponent,
     FormSelectComponent,
+    FormGroupComponent
   ],
   imports: [
     CommonModule,

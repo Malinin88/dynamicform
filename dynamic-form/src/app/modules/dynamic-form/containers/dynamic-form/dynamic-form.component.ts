@@ -1,5 +1,5 @@
+import { IDynamicFieldConfig } from './../../interfaces/dynamic-field-config.interface';
 import { IFieldRenderDependency } from './../../interfaces/field-render-dependency.interface';
-import { IDynamicFieldConfig } from '../../interfaces/dynamic-field-config.interface';
 
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
@@ -32,19 +32,35 @@ export class DynamicFormComponent implements OnInit {
   }
 
   private createGroup(): FormGroup {
-    const group = this.fb.group({});
-
-    this.config.forEach(controlConfig => {
-      if (controlConfig.type === FORM_CONTROL_TYPE.button) {
-        return;
-      }
-
-      group.addControl(controlConfig.controlName, this.fb.control(controlConfig.value, controlConfig.validators));
-    });
+    let group = this.fb.group({});
+    group = this.populateGroup(group, this.config);
 
     this.config.forEach(fieldConfig => {
       const control = group.get(fieldConfig.controlName) as FormControl;
       this.applyRenderDepsForControl(control, fieldConfig, group, fieldConfig.renderDependencies);
+    });
+
+    return group;
+  }
+
+  private populateGroup(group: FormGroup, formConfig: IDynamicFieldConfig[]): FormGroup {
+    formConfig.forEach(fieldConfig => {
+      switch (fieldConfig.type) {
+        case FORM_CONTROL_TYPE.button:
+          break;
+        case FORM_CONTROL_TYPE.input:
+        case FORM_CONTROL_TYPE.select:
+          group.addControl(fieldConfig.controlName, this.fb.control(fieldConfig.value, fieldConfig.validators));
+          break;
+        case FORM_CONTROL_TYPE.group:
+          // Add the nested form and recursively add the nested in that one
+          let subGroup = this.fb.group({});
+          subGroup = this.populateGroup(subGroup, fieldConfig.nestedFormConfig);
+          group.addControl(fieldConfig.controlName, subGroup);
+          break;
+        default:
+          throw new Error(`Unknown dynamic field type: ${fieldConfig.type}`);
+      }
     });
 
     return group;

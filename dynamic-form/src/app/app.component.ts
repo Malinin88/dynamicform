@@ -58,6 +58,28 @@ export class AppComponent implements OnInit {
           visible: true,
         },
         {
+          type: FORM_CONTROL_TYPE.group,
+          controlName: 'nestedFormOne',
+          visible: true,
+          nestedFormConfig: [
+            {
+              type: FORM_CONTROL_TYPE.input,
+              label: 'Full name three',
+              controlName: 'nameThree',
+              placeholder: 'Enter your name three',
+              visible: true
+            },
+            {
+              type: FORM_CONTROL_TYPE.select,
+              label: 'Favourite food three',
+              controlName: 'foodThree',
+              options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
+              placeholder: 'Select an option three',
+              visible: true
+            }
+          ]
+        },
+        {
           label: 'Submit one',
           controlName: 'submitOne',
           type: FORM_CONTROL_TYPE.button,
@@ -70,7 +92,7 @@ export class AppComponent implements OnInit {
               condition: FORM_DEPENDENCY_CONDITION.formInvalid
             }
           ]
-        },
+        }
       ]
     },
     {
