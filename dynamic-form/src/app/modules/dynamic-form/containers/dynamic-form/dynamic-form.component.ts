@@ -51,13 +51,14 @@ export class DynamicFormComponent implements OnInit {
     formConfig.forEach(fieldConfig => {
       switch (fieldConfig.type) {
         case FORM_CONTROL_TYPE.button:
+        case FORM_CONTROL_TYPE.group:
           break;
         case FORM_CONTROL_TYPE.input:
         case FORM_CONTROL_TYPE.select:
           group.addControl(fieldConfig.controlName, this.fb.control(fieldConfig.value, fieldConfig.validators));
           break;
         case FORM_CONTROL_TYPE.group:
-          // Add the nested form and recursively add the nested in that one
+          // Add the nested form and recursively add the nested forms in that one
           let subGroup = this.fb.group({});
           subGroup = this.populateGroup(subGroup, fieldConfig.nestedFormConfig);
           group.addControl(fieldConfig.controlName, subGroup);

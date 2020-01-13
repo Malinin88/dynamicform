@@ -67,6 +67,7 @@ export class AppComponent implements OnInit {
               label: 'Full name three',
               controlName: 'nameThree',
               placeholder: 'Enter your name three',
+              validators: [Validators.required],
               visible: true
             },
             {
@@ -75,7 +76,32 @@ export class AppComponent implements OnInit {
               controlName: 'foodThree',
               options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
               placeholder: 'Select an option three',
+              validators: [Validators.required],
               visible: true
+            },
+            {
+              type: FORM_CONTROL_TYPE.group,
+              controlName: 'nestedFormFour',
+              visible: true,
+              nestedFormConfig: [
+                {
+                  type: FORM_CONTROL_TYPE.input,
+                  label: 'Full name four',
+                  controlName: 'nameFour',
+                  placeholder: 'Enter your name four',
+                  validators: [Validators.required],
+                  visible: true
+                },
+                {
+                  type: FORM_CONTROL_TYPE.select,
+                  label: 'Favourite food four',
+                  controlName: 'foodFour',
+                  options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
+                  placeholder: 'Select an option four',
+                  validators: [Validators.required],
+                  visible: true
+                }
+              ]
             }
           ]
         },
