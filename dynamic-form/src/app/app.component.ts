@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
           controlName: 'nameOne',
           placeholder: 'Enter your name one',
           validators: [Validators.required],
+          value: 'Name One Value',
           visible: true,
           renderDependencies: [
             {
@@ -96,6 +97,7 @@ export class AppComponent implements OnInit {
                   type: FORM_CONTROL_TYPE.select,
                   label: 'Favourite food four',
                   controlName: 'foodFour',
+                  value: 'Hot Dogs',
                   options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
                   placeholder: 'Select an option four',
                   validators: [Validators.required],

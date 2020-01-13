@@ -1,6 +1,6 @@
 <div *ngIf="config.visible" class="dynamic-field form-select" [formGroup]="group">
 <label>{{config.label}}</label>
-  <select [formControlName]="config.controlName">
+  <select [formControlName]="config.controlName" [value]="config.value">
     <option value=""></option>
   <option *ngFor="let option of config.options">{{option}}</option>
   </select>
