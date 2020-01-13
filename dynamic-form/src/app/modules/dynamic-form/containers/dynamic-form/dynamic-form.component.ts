@@ -18,9 +18,9 @@ import { FORM_CONTROL_TYPE } from '../../constants/form-control-type.enum';
 export class DynamicFormComponent implements OnInit {
   @Input() public config: IDynamicFieldConfig[];
 
-  @Output() public submitted: EventEmitter<any> = new EventEmitter<any>();
+  @Input() form: FormGroup;
 
-  public form: FormGroup;
+  @Output() public submitted: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
     private fb: FormBuilder,
@@ -28,7 +28,11 @@ export class DynamicFormComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.form = this.createGroup();
+    if (!this.form) {
+      this.form = this.createGroup();
+    } else {
+      this.populateGroup(this.form, this.config);
+    }
   }
 
   private createGroup(): FormGroup {
