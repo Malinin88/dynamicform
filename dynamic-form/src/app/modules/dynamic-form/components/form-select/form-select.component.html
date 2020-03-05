@@ -1,7 +1,9 @@
 <div *ngIf="config.visible" class="dynamic-field form-select" [formGroup]="group">
-<label>{{config.label}}</label>
-  <select [formControlName]="config.controlName" [value]="config.value">
-    <option value=""></option>
-  <option *ngFor="let option of config.options">{{option}}</option>
-  </select>
+  <mat-form-field>
+    <mat-label>{{config.label}}</mat-label>
+    <mat-select [formControlName]="config.controlName" [value]="config.value">
+      <mat-option [value]=""></mat-option>
+      <mat-option *ngFor="let option of config.options" [value]="option">{{option}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>

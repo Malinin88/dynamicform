@@ -1,3 +1,3 @@
-<div *ngIf="config.visible" class="dynamic-field form-button" [formGroup]="group">
-  <button type="submit" [disabled]="config.disabled">{{config.label}}</button>
-</div>
+<ng-container *ngIf="config.visible" class="dynamic-field form-button" [formGroup]="group">
+  <button mat-raised-button color="accent" type="submit" [disabled]="config.disabled">{{config.label}}</button>
+</ng-container>

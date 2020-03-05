@@ -1,4 +1,6 @@
 <div *ngIf="config.visible" class="dynamic-field form-input" [formGroup]="group">
-  <label>{{config.label}}</label>
-  <input type="text" [attr.placeholder]="config.placeholder" [formControlName]="config.controlName" />
+  <mat-form-field>
+    <mat-label>{{config.label}}</mat-label>
+    <input matInput type="text" [attr.placeholder]="config.placeholder" [formControlName]="config.controlName" />
+  </mat-form-field>
 </div>
